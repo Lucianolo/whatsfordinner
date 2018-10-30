@@ -46,6 +46,11 @@ TableSchema.methods.comment = function(c) {
     return this.save()
 }
 
+TableSchema.methods.addHost = function (hostId) {
+    this.host = hostId
+    return this.save()
+}
+
 TableSchema.methods.getUserTables = function (_id) {
     Table.find({'host': _id}).then((tables) => {
         return tables
