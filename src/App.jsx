@@ -9,7 +9,7 @@ import TableView from './components/TableView'
 import requireAuthentication from './utils/requireAuth'
 import TableEditor from './components/TableEditor'
 import SignInWith from './components/SignInWith'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 class App extends Component {
     render() {
         const pathname = window.location.pathname
