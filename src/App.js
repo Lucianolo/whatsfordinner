@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import TableView from './components/TableView'
+import requireAuthentication from './utils/requireAuth'
 import TableEditor from './components/TableEditor'
 import SignInWith from './components/SignInWith'
 
@@ -21,7 +22,7 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route path="/profile/:id" component={Profile} />
                     <Route path="/tables/:id" component={TableView} />
-                    <Route path="/tables/editor" component={TableEditor} />
+                    <Route path="/tables/editor" component={requireAuthentication(TableEditor)} />
                     <Route path="**" component={Home} />
                 </Switch>
             </div>
