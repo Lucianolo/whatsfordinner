@@ -12,9 +12,13 @@
     "cors": "^2.8.4",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "gravatar": "^1.6.0",
     "helmet": "^3.14.0",
     "history": "^4.7.2",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.7",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
@@ -27,7 +31,8 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^10.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +49,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
 }
