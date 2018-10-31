@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import articles from './reducers/articles'
+import tables from './reducers/tables'
 import authUser from './reducers/authUser'
 import common from './reducers/common'
 import { routerReducer } from 'react-router-redux'
 
 export default combineReducers({
-    articles,
+    tables,
     authUser,
     common,
     router: routerReducer

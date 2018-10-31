@@ -4,8 +4,9 @@ const fs = require('fs')
 const cloudinary = require('cloudinary')
 module.exports = {
     addTable: (req, res, next) => {
-        let { date, location, description, seats, category } = req.body
-        if (req.files.image) {
+        let { location, description, seats, category } = req.body
+        const date = Date.parse(req.body.date)
+        /*if (req.files.image) {
             cloudinary.uploader.upload(req.files.image.path, (result) => {
                 let obj = { date, location, description, seats, category, feature_img: result.url !== null ? result.url : '' }
                 saveTable(obj)
@@ -17,7 +18,8 @@ module.exports = {
             })
         }else {
             saveTable({ date, location, description, seats, category, feature_img: '' })
-        }
+        }*/
+        saveTable({ date, location, description, seats, category, featureImg: '' })
         function saveTable(obj) {
             new Table(obj).save((err, table) => {
                 if (err)

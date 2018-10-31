@@ -12,24 +12,24 @@ module.exports = (router) => {
      * add a table
      */
     router
-        .route('/table')
+        .route('/tables')
         .post(multipartWare, tableController.addTable)
     /**
      * add a guest to a table
      */
     router
-        .route('/table/clap')
+        .route('/tables/guests')
         .post(tableController.addGuestToTable)
     /**
      * comment on a table
      */
     router
-        .route('/article/comment')
+        .route('/tables/:id/comment')
         .post(tableController.commentTable)
     /**
      * get a particlular table to view
      */
     router
-        .route('/table/:id')
+        .route('/tables/:id')
         .get(tableController.getTable)
 }
