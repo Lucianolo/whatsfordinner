@@ -27,4 +27,9 @@ module.exports = (router) => {
      */
     router.delete('/users/:id', userController.deleteUser)
 
+    /**
+     * Authenticate Users
+     */
+    router.post('/users/login', userController.authenticateUser)
+
 }

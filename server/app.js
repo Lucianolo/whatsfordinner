@@ -6,6 +6,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const cloudinary = require('cloudinary')
+const session = require('express-session')
 
 const app = express()
 const router = express.Router()
@@ -36,6 +37,11 @@ routes(router)
 app.use(cors())
 app.use(bodyParser.json())
 app.use(helmet())
+app.use(session({
+    secret: 'whatsfordinner-dev',
+    resave: true,
+    saveUninitialized: false
+}))
 //app.use('/static',express.static(path.join(__dirname,'static')))
 
 app.use('/api', router)

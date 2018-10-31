@@ -17,11 +17,8 @@ module.exports = {
 
     getAllUsers: (req, res, next) => {
         User.find({}, (err, users) => {
-            if (err) {
-                return next(err)
-            } else {
-                return res.send(users)
-            }
+            if (err) return next(err)
+            res.send(users)
         })
     },
 
@@ -45,4 +42,20 @@ module.exports = {
             res.send('User deleted successfully!')
         })
     },
+
+    authenticateUser: (req, res, next) => {
+        User.findOne({email: req.body.email}, (err, user) => {
+            if (err) return next(err)
+            // test a matching password
+            user.comparePassword(req.body.password, (err, isMatch) => {
+                if (err) next(err)
+                if (isMatch) {
+                    req.session.userId = user._id
+                    res.send('Successful login!')
+                } else {
+                    res.send('Wrong Password')
+                }
+            })
+        })
+    }
 }
