@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router-dom'
+
+import Header from './components/Header'
+import Home from './components/Home'
+import Profile from './components/Profile'
+import TableView from './components/TableView'
+import TableEditor from './components/TableEditor'
+import SignInWith from './components/SignInWith'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        const pathname = window.location.pathname
+        return (
+            <div className='App'>
+                { !pathname.includes('editor') ? <Header /> : '' }
+                <SignInWith />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/profile/:id" component={Profile} />
+                    <Route path="/tables/:id" component={TableView} />
+                    <Route path="/tables/editor" component={TableEditor} />
+                    <Route path="**" component={Home} />
+                </Switch>
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
