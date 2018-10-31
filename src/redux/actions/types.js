@@ -1,0 +1,8 @@
+export const GET_ERRORS = 'GET_ERRORS'
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'
+export const LOAD_TABLES = 'LOAD_TABLES'
+export const SET_PROFILE = 'SET_PROFILE'
+export const VIEW_TABLE = 'VIEW_TABLE'
+export const ADD_GUEST = 'ADD_GUEST'
+export const FOLLOW_USER = 'FOLLOW_USER'
+export const SET_USER = 'SET_USER'

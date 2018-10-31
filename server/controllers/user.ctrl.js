@@ -15,7 +15,7 @@ module.exports = {
         }).then(user => {
             if (user) {
                 return res.status(400).json({
-                    error: 'Email already exists'
+                    email: 'Email already exists'
                 })
             }
             else {
@@ -75,13 +75,11 @@ module.exports = {
         }
         const {email, password} = req.body
         User.findOne({email: email})
-            .then((err, user) => {
-                if (err) return next(err)
+            .then((user) => {
                 if (!user) {
                     errors.email = 'User not found'
                     return res.status(404).json(errors)
                 }
-                // test a matching password
                 user.comparePassword(password, (err, isMatch) => {
                     if (err) next(err)
                     if (isMatch) {
