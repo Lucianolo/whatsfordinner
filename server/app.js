@@ -6,11 +6,14 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const cloudinary = require('cloudinary')
-const session = require('express-session')
+const passport = require('passport')
 
 const app = express()
 const router = express.Router()
 const url = process.env.MONGODB_URI || "mongodb://localhost:27017/whatsfordinner"
+
+app.use(passport.initialize())
+require('./util/passport')(passport)
 
 /** configure cloudinary */
 cloudinary.config({
@@ -37,11 +40,7 @@ routes(router)
 app.use(cors())
 app.use(bodyParser.json())
 app.use(helmet())
-app.use(session({
-    secret: 'whatsfordinner-dev',
-    resave: true,
-    saveUninitialized: false
-}))
+
 //app.use('/static',express.static(path.join(__dirname,'static')))
 
 app.use('/api', router)
