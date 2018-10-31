@@ -9,7 +9,10 @@ import TableView from './components/TableView'
 import requireAuthentication from './utils/requireAuth'
 import TableEditor from './components/TableEditor'
 import SignInWith from './components/SignInWith'
+import Register from './components/Register'
+import Login from './components/Login'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 class App extends Component {
     render() {
         const pathname = window.location.pathname
@@ -22,6 +25,10 @@ class App extends Component {
                     <Route path="/profile/:id" component={Profile} />
                     <Route path="/tables/:id" component={TableView} />
                     <Route path="/tables/editor" component={requireAuthentication(TableEditor)} />
+                    <div className="container">
+                        <Route exact path="/register" component={ Register } />
+                        <Route exact path="/login" component={ Login } />
+                    </div>
                     <Route path="**" component={Home} />
                 </Switch>
             </div>
